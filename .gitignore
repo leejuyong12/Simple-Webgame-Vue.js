@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,python,vuejs,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,python,vuejs,windows
 
+/node_modules
+dist
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -561,3 +564,4 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,python,vuejs,windows
+
