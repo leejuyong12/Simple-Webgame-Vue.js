@@ -2,8 +2,11 @@
   <div>
     <!-- v-bind 를 : 로 대체할 수 있다. -->
     <div id="screen" v-bind:class="state" @click="onClickScreen">{{message}}</div>  
-    <div>
-      <div>평균시간: {{result.reduce((a, c) => a+c, 0) / result.length || 0}}ms</div>
+    <div v-if="result.length">
+    <!-- v-show 와 v-if의 차이 = v-show는 태그가 있고 display:none이라 되어있고 -->
+    <!-- v-if는 그냥 주석처리된 거만 생긴다 그니까 한마디로 v-show는 있는데 안보여주는거고-->
+    <!-- v-if는 그냥 안생기고 생기고 이런 흐름이다. -->
+      <div>평균시간: {{average}}ms</div>
       <button @click="onReset">리셋</button>
     </div>
   </div>
@@ -19,6 +22,11 @@
         state: 'waiting',
         message: '클릭해서 시작하세요.'
       };
+    },
+    computed: {  // computed 쓰는 이유 - 값이 캐싱이 된다. - 다른 부분이 바꼈을때 이 부분이 재실행되지 않도록
+      average() {
+        return this.result.reduce((a, c) => a+c, 0) / this.result.length || 0;
+      }
     },
     methods: {
       onReset() {
